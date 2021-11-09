@@ -1,0 +1,20 @@
+apiVersion:extension/v1beta1
+kind: Ingress
+metadata:
+ labels:
+  app:linuxacademy
+ name:prod-linuxacademy
+ namespace:prod
+spec:
+ rules:
+  -host:prod-linuxacademy.com
+   http:
+    paths:
+     -backend:
+       serviceName:prod-linuxacademy
+       servicePort:8080
+      path:/
+     -backend:
+       serviceName:prod-linuxacademy
+       servicePort:8080
+      path:/actuator/health
