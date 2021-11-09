@@ -11,10 +11,10 @@ spec:
    http:
     paths:
      -backend:
-       serviceName:prod-linuxacademy
+       serviceName:prod-sample01
        servicePort:8080
       path:/
      -backend:
-       serviceName:prod-linuxacademy
+       serviceName:prod-sample02
        servicePort:8080
       path:/actuator/health
