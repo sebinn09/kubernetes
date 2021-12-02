@@ -1,3 +1,4 @@
+#In your local machine
 #create a directory called simplek8s
 #change into simplek8s 
 vi client-pod.yml
