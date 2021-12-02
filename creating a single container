@@ -5,7 +5,7 @@ vi client-pod.yml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: client-pod
+  name: client-pod   #pod name 
   labels:
     component: web     #is the component which connect node to service
 spec:
@@ -22,7 +22,7 @@ vi client-node-port.yml
 apiVersion: v1
 kind: Service
 metadata:
-  name: client-node-port
+  name: client-node-port        #pod name
 spec:
   type: NodePort
   ports:
