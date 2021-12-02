@@ -1,0 +1,46 @@
+#create a directory called simplek8s
+#change into simplek8s 
+vi client-pod.yml
+------------------------------------------------------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    component: web     #is the component which connect node to service
+spec:
+  containers:
+    - name: client-pod
+      image: stephengrider/multi-client
+      ports:
+        - containerPort: 3000
+
+--------------------------------------------------------------------
+
+vi client-node-port.yml
+--------------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    - port: 3050                #port number if other pods want to communicate with this pod
+      targetPort: 3000          #port number enabled for incoming  traffic to this pod
+      nodePort: 31515           #port number enabled for outgoing traffic from this pod  (when we type port number in browser use this port number)
+  selector:
+    component: web  # is the component which connect service to node
+-------------------------------------------------------------------
+
+kubectl apply -f client-pod.yaml     
+kubectl apply -f client-node-port.yaml
+
+kubectl get pods
+kubectl get services
+
+if you are using minikube,
+minikube ip
+In browser type,
+
+<minikube ip>:<nodeport>      #You will get node port number from "kubectl get services" command
