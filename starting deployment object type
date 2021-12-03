@@ -1,0 +1,45 @@
+#In project root directory
+
+vi client-deployment.yaml
+----------------------------------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000
+---------------------------------------------------------------
+
+vi client-node-port.yaml
+-----------------------------------------------------------------
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    - port: 3050
+      targetPort: 3000
+      nodePort: 31515
+  selector:
+    component: web
+ ---------------------------------------------------------------------
+ 
+ To make change in any object
+ 
+ kubectl set <prperty you want to change(image)> <objecttype(delpoyment)>/<objectname(client-deployment) <containername(client)> = <name to updateimage
+               
