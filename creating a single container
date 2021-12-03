@@ -38,6 +38,7 @@ kubectl apply -f client-node-port.yaml
 
 kubectl get pods
 kubectl get services
+kubectl describe pods client-pod      # kubectl describe <object type (pods/services)> object name
 
 if you are using minikube,
 minikube ip
