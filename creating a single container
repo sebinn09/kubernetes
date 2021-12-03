@@ -45,3 +45,6 @@ minikube ip
 In browser type,
 
 <minikube ip>:<nodeport>      #You will get node port number from "kubectl get services" command
+
+kubectl delete -f <configuration file name>  #To delete a running object
+kubectl get pods -o wide
